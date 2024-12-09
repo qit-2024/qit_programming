@@ -1,0 +1,68 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES Encryption</title>
+</head>
+<body>
+    <h1>AES Encryption and Decryption</h1>
+    <form method="POST" id="encryptForm">
+        {% csrf_token %}
+        <label for="text">Text:</label>
+        <input type="text" id="text" name="text" maxlength="16" required><br><br>
+        <label for="key">Key:</label>
+        <input type="text" id="key" name="key" maxlength="16" required><br><br>
+        <button type="submit" name="action" value="encrypt">Encrypt</button>
+        <button type="submit" name="action" value="decrypt">Decrypt</button>
+    </form>
+    {% if result %}
+        <h3>Result: {{ result }}</h3>
+    {% endif %}
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AES Encryption</title>
+    <style>
+        textarea {
+            width: 100%;
+            height: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>AES Encryption and Decryption</h1>
+    <form method="POST">
+        {% csrf_token %}
+
+        <!-- Secret Key -->
+        <label for="key">Secret Key (Input Manually):</label>
+        <textarea id="key" name="key" placeholder="Enter a 16-character secret key"></textarea><br><br>
+
+        <!-- Text to Encrypt -->
+        <label for="text">Text to Encrypt/Decrypt:</label>
+        <textarea id="text" name="text" placeholder="Enter text to encrypt or decrypt"></textarea><br><br>
+
+        <!-- Encrypted Text -->
+        <label for="encrypted">Encrypted Text:</label>
+        <textarea id="encrypted" name="encrypted" readonly>{{ encrypted_text }}</textarea><br><br>
+
+        <!-- Decrypted Text -->
+        <label for="decrypted">Decrypted Text:</label>
+        <textarea id="decrypted" name="decrypted" readonly>{{ decrypted_text }}</textarea><br><br>
+
+        <!-- Error Message -->
+        {% if error_message %}
+        <p style="color: red;">{{ error_message }}</p>
+        {% endif %}
+
+        <!-- Buttons -->
+        <button type="submit" name="action" value="encrypt">Encrypt</button>
+        <button type="submit" name="action" value="decrypt">Decrypt</button>
+    </form>
+</body>
+</html>
