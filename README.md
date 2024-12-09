@@ -1,2 +1,2 @@
 # qit_programming
-problem no. 17 and AES project in django
+problem no. 17 from Leetcode and AES project in django
