@@ -4,17 +4,17 @@
 
 Discrete Fourier Transform (DFT) is the base apparatus used in frequency analysis of discrete signals.
 
-The Cooley-Tukey Fast Fourier Transform (FFT) algorithm, being the topic of this code sample, was proposed in 1965 by James W. Cooley and John W. Tukey.
+Cooley-Tukey's Fast Fourier Transform (FFT) algorithm, being the topic of this code sample, was proposed in 1965 by James W. Cooley and John W. Tukey.
 
-The main advantage of the algorithm is reduced computation cost of the Fourier Transform ($O(N*log(N))$ instead of $O(N^2)$ achieved with direct Fourier Transform).
+The main advantage of algorithm is reduced computation cost of Fourier Transform ($O(N*log(N))$ instead of $O(N^2)$ achieved by Direct Fourier Transform).
 
-The disadvantages of the discussed algorithms are the following:
+The disadvantages of discussed algorithm are the following:
 1. *Radix-2* number of samples in input signal -- reduced suitability for signals of length numbers that contain other primes than 2;
 2. *Recursion* used in the algorithm may incur to increased memory and/or call stack usage.
 
 ### Code sample in this repository
 
-The main code sample is contained in `fast_fourier_transform.py` file. Presented sample code has the following structure:
+The main code sample is stored in `fast_fourier_transform.py` file. Presented sample code has the following structure:
 
 1. *Importing necessary modules*: the modules in use are:
    * `argparse`: argument parser used in cases where the code sample is invoked as a program (general use-case scenario);
