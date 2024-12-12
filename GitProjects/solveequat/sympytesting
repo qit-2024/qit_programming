@@ -1,0 +1,2 @@
+import numpy
+f=sympy.sympify(equation)
