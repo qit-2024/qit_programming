@@ -84,7 +84,7 @@ Notice the `fast_fourier_transform` module, when called in `"__main__"` context,
 0,0,4,0
 ```
 
-Although generally is a true, the floating-point calculations produce imprecisions shown in the output sample below:
+Although generally this is true, the floating-point calculations produce imprecisions shown in the output sample below:
 
 ```csv
 0j,0j,4j,0j
