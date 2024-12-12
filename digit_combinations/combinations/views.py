@@ -18,14 +18,14 @@ def combinations_view(request):
         user_input = request.POST.get('digits')
         try:
             digits = [int(d) for d in user_input]
-            if len(digits) == 4 and all(digit in digit_to_letters for digit in digits):
+            if all(digit in digit_to_letters for digit in digits):
                 lists_of_letters = [digit_to_letters[digit] for digit in digits]
                 combinations = [''.join(combo) for combo in product(*lists_of_letters)]
                 return render(request, 'combinations.html', {'combinations': combinations})
             else:
-                error = "Invalid input. Please enter only 4 digits from 2 to 9."
+                error = "Invalid input. Please enter only digits from 2 to 9."
         except (IndexError, ValueError):
-            error = "Invalid input. Please enter exactly 4 digits."
+            error = "Invalid input. Please enter digits from 2 to 9."
         return render(request, 'combinations.html', {'error': error})
     
     return render(request, 'combinations.html')
