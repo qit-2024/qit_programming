@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leetcode Problem 204</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .form-group {
+            margin-bottom: 15px;
+        }
+        .error-message {
+            width: 100%;
+            color: red;
+            background-color: #ffeeee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            margin-top: 15px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+        }
+        .result-display {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Leetcode Problem 204</h1>
+        <p>Given an integer n, return the number of prime numbers that are strictly less than n.</p>
+        
+        <form method="post">
+            {% csrf_token %}
+            <div class="form-group">
+                {{ form.user_input.label_tag }}
+                {{ form.user_input }}
+                
+                <!-- Display field-specific errors -->
+                {% if form.user_input.errors %}
+                    <div class="error-message">
+                        {% for error in form.user_input.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            <button type="submit">Submit</button>
+        </form>
+
+        <!-- Display non-field errors (form-wide errors) -->
+        {% if form.non_field_errors %}
+            <div class="error-message">
+                {% for error in form.non_field_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        {% if result %}
+        <div class="result-display">
+            <p>Number of primes: {{ result }}</p>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>

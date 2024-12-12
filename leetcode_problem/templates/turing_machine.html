@@ -1,0 +1,98 @@
+<!-- random_app/templates/turing_machine.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Turing Machine Simulator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        .form-container {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            margin-top: 20px;
+        }
+        .error-message {
+            color: red;
+            background-color: #ffeeee;
+            padding: 10px;
+            border-radius: 5px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+        }
+        .result-display {
+            background-color: #f4f4f4;
+            padding: 15px;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        textarea {
+            width: 100%;
+            font-family: Arial, sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h1>Turing Machine Simulator</h1>
+        
+        <form method="post">
+            {% csrf_token %}
+            
+            <!-- Turing Machine Code Input -->
+            <div class="form-group">
+                {{ form.turing_code.label_tag }}
+                {{ form.turing_code }}
+                {% if form.turing_code.errors %}
+                    <div class="error-message">
+                        {% for error in form.turing_code.errors %}
+                            {{ error }}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+            </div>
+            
+            <!-- Initial Tape Input -->
+            <div class="form-group">
+                {{ form.initial_tape.label_tag }}
+                {{ form.initial_tape }}
+            </div>
+            
+            <button type="submit">Simulate Turing Machine</button>
+        </form>
+
+        <!-- Form-wide Errors -->
+        {% if form_errors %}
+            <div class="error-message">
+                {% for error in form_errors %}
+                    {{ error }}
+                {% endfor %}
+            </div>
+        {% endif %}
+
+        <!-- Turing Machine Execution Errors -->
+        {% if turing_error %}
+            <div class="error-message">
+                <strong>Turing Machine Error:</strong>
+                {{ turing_error }}
+            </div>
+        {% endif %}
+
+        <!-- Simulation Results -->
+        {% if final_tape %}
+            <div class="result-display">
+                <h2>Simulation Result</h2>
+                <p><strong>Final Result:</strong> {{ result }}</p>
+                <p><strong>Final Tape:</strong> {{ final_tape }}</p>
+                <p><strong>Step Count:</strong> {{ step_count }}</p>
+            </div>
+        {% endif %}
+    </div>
+</body>
+</html>
