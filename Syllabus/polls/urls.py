@@ -1,8 +1,9 @@
-from django.urls import re_path
+from django.urls import path
 
-from .views import HomePage
+from .views import get_input_matrix, index
 
 
 urlpatterns = [
-    re_path("", HomePage.as_view())
+    path("", index, name="index"),
+    path("get_input_matrix/", get_input_matrix, name="get_input_matrix")
 ]
