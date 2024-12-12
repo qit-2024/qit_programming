@@ -1,0 +1,19 @@
+.matrix-input-card {
+    max-width: 600px;
+    margin: 20px;
+}
+
+.matrix-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.matrix-row {
+    display: flex;
+    gap: 8px;
+}
+
+.matrix-cell {
+    width: 60px !important;
+}
