@@ -85,8 +85,3 @@ class MatrixDecomposition:
         Q = list(map(list, zip(*Q)))
         
         return Q, R
-
-    @staticmethod
-    def generate_random_matrix(rows, cols, min_val=-10, max_val=10):
-        """Generate a random matrix"""
-        return [[random.uniform(min_val, max_val) for _ in range(cols)] for _ in range(rows)]
