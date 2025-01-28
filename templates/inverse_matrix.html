@@ -1,27 +1,29 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Title</title>
-</head>
-<body>
-  <p>This application calculates:<br>
+{% extends "base.html" %}
+
+{% block content %}
+
+  <p><b>Inverse Matrix</b><br>
+    This feature calculates:<br>
     - matrix's determinant,<br>
     - cofactor's matrix,<br>
     - adjugate matrix<br>
     - inverse matrix<br>
     for a given NxN (N > 0) square matrix.<br><br>
     The determinants are calculated using Laplace expansion.<br><br>
+    <b>Input example:</b><br>
+    For 3x3 matrix like this:<br>
+    [1, 2, 3]<br>
+    [4, 5, 6]<br>
+    [7, 8, 9]<br>
+    Input looks exactly like this:<br>
+    [1, 2, 3, 4, 5, 6, 7, 8, 9]<br>
   </p><br><hr/><br>
-  <form action="/get_input_matrix/" method="post">
+  <form action="/inverse_matrix/" method="post">
     {% csrf_token %}
     <label for="input_matrix">
-      Please insert a square matrix of any dimension:<br>
-      # For 3x3 matrix like this:<br>
-      # [1, 2, 3]<br># [4, 5, 6]<br># [7, 8, 9]<br>
-      # Input looks exactly like this:<br># [1, 2, 3, 4, 5, 6, 7, 8, 9]<br>
+      Please insert a square matrix of any dimension:
     </label><br>
-    <input typ="text" id="input_matrix" name="input_matrix_field" size="100"/>
+    <input type="text" id="input_matrix" name="input_matrix_field" size="100"/><br><br>
     <input type="submit" value="calculate">
   </form>
   {% if calc_output %}
@@ -39,5 +41,4 @@
     </ul>
   {% endif %}
 
-</body>
-</html>
+{% endblock %}

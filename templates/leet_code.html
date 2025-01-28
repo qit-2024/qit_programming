@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <p><b>LeetCode</b><br>
+    This is a solution for LeetCode problem
+    <a href="https://leetcode.com/problems/add-two-numbers/">"2. Add Two Numbers"</a>.<br/><br>
+    <b>Problem:</b><br>
+    You are given two non-empty linked lists representing two non-negative integers.
+    The digits are stored in reverse order, and each of their nodes contains a single digit.
+    Add the two numbers and return the sum as a linked list.<br><br>
+    You may assume the two numbers do not contain any leading zero,
+    except the number 0 itself.<br><br>
+    <b>Example 1:</b><br>
+    <ul style="list-style-type:none;">
+      <li>Input: number_1 = 243, number_2 = 564</li>
+      <li>Output: 708</li>
+      <li>Explanation: 342 + 465 = 807.</li>
+    </ul>
+    <b>Example 2:</b><br>
+    <ul style="list-style-type:none;">
+      <li>Input: number_1 = 0, number_2 = 0</li>
+      <li>Output: 0</li>
+    </ul>
+    <b>Example 3:</b><br>
+    <ul style="list-style-type:none;">
+      <li>Input: number_1 = 9999999, number_2 = 9999</li>
+      <li>Output: 89990001</li>
+    </ul>
+    <b>Constraints:</b><br>
+    <ul>
+      <li>The number of digits in each number is in the range [1, 100].</li>
+      <li>Number can not have leading zeros.</li>
+    </ul>
+  </p><br><hr/>
+  <p>Please insert two reversed numbers:</p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Calculate">
+  </form>
+  {% if calc_output %}
+    <ul>
+      {% for steps in calc_output %}
+        <li>
+          <ul style="list-style-type:none;">
+            {% for line in steps %}
+              <li>{{line}}</li>
+            {% endfor %}
+            <br>
+          </ul>
+        </li>
+      {% endfor %}
+    </ul>
+  {% endif %}
+
+{% endblock %}

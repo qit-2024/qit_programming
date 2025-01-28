@@ -1,10 +1,9 @@
-import numpy
 import numpy as np
 
 from ast import literal_eval
 
-from .my_exception import (InvalidInputDataException, InvalidInputDataLengthException,
-                           InvalidInputDataMatrixNotSquareException)
+from qit_app.inverse_matrix.my_exception import (InvalidInputDataException, InvalidInputDataLengthException,
+                                                 InvalidInputDataMatrixNotSquareException)
 
 
 def parse_input(input_data):
@@ -14,18 +13,18 @@ def parse_input(input_data):
             data = [np.float32(x) for x in data_list]
         else:
             raise InvalidInputDataException(
-                f"Failure: Invalid input data!\nRequired: list of numbers. Please check brackets []")
+                f"Failure:\nInvalid input data!\nRequired list of numbers. Please check brackets []")
     except InvalidInputDataException as err:
         raise err
     except Exception:
         raise InvalidInputDataException(
-            f"Failure: Invalid input data!\nRequired: list of numbers.")
+            f"Failure:\nInvalid input data!\nRequired list of numbers.")
 
     if len(data) == 0:
         raise InvalidInputDataLengthException(
-            f"Failure: Invalid input data (data length is equal 0)!")
+            f"Failure:\nInvalid input data (data length is equal 0)!")
 
-    dim = numpy.sqrt(len(data))
+    dim = np.sqrt(len(data))
     if dim % 1 != 0:
         raise InvalidInputDataMatrixNotSquareException(
             f"Failure: The input matrix is not a square matrix!")
@@ -107,7 +106,7 @@ def calc_inverse_matrix(input_matrix):
 
     # Calculating the determinant of a matrix.
     det_a = find_determinant(matrix)
-    calc_output.append(f"Determinant: {det_a}")
+    calc_output.append(f"Determinant:\n{det_a}")
 
     # Checking if the matrix is singular. (singularity for determinant equal 0)
     if det_a != 0:
@@ -125,10 +124,9 @@ def calc_inverse_matrix(input_matrix):
 
         # Checking the result.
         is_valid = check_result(matrix, adj_matrix)
-        calc_output.append(f"Result: {"correct." if is_valid else "incorrect!"}")
+        calc_output.append(f"Result:\n{"correct" if is_valid else "incorrect"}")
     else:
-        calc_output.append("Failure: The input matrix is a singular matrix [det(A) = 0]."
+        calc_output.append("Failure:\nThe input matrix is a singular matrix [det(A) = 0]."
                            " The inverse of such matrix is not defined!")
 
     return calc_output
-
