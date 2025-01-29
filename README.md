@@ -1,8 +1,16 @@
 QIT Programming:<br>
-This application has two features:<br>
+This application has three features:<br>
 
 * LeetCode<br>
 This is a solution for LeetCode problem ["2. Add Two Numbers"](https://leetcode.com/problems/add-two-numbers/).<br>
+
+* Sorting Algorithms<br>
+This is a comparison of the following sorting algorithms:<br>
+\- Bubble Sort,<br>
+\- Insertion Sort,<br>
+\- Merge Sort,<br>
+\- Quick Sort,<br>
+\- Heap Sort.<br>
 
 * Inverse Matrix<br>
 This feature calculates:<br>

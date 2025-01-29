@@ -5,6 +5,8 @@ from django.shortcuts import render
 from qit_app.leet_code.forms import GetInputNumbers
 from qit_app.leet_code.utils import list_node_to_int, int_to_list_node
 from qit_app.leet_code.add_two_numbers_recursion import Solution
+from qit_app.sorting_algorithms.forms import GetInputList
+from qit_app.sorting_algorithms.sorting_algorithms import compare_sorts
 from qit_app.inverse_matrix.forms import GetInputMatrix
 from qit_app.inverse_matrix.inverse_matrix import calc_inverse_matrix
 from qit_app.utils import parse_data_for_html
@@ -37,6 +39,18 @@ def leet_code(request):
             context["form"] = GetInputNumbers(None)
 
     return render(request, "leet_code.html", context)
+
+
+def sorting_algorithms(request):
+    context = dict()
+    form = GetInputList(request.POST or None)
+    context["form"] = form
+    if request.POST:
+        if form.is_valid():
+            l = form.cleaned_data.get("input_list")
+            context["sorted_output"], context["comparison"] = compare_sorts(l)
+
+    return render(request, "sorting_algorithms.html", context)
 
 
 def inverse_matrix(request):
