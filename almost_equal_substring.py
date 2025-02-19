@@ -2,7 +2,7 @@
 
 
 # Note: will return -1 as described in the problem description
-def almost_equal(s: str, pattern: str, strict_near_equality: bool = True) -> int or None:
+def almost_equal(s: str, pattern: str) -> int or None:
     assert s.isalpha() and s.islower()
     assert pattern.isalpha() and pattern.islower()
     # Sanity check
@@ -28,14 +28,9 @@ def almost_equal(s: str, pattern: str, strict_near_equality: bool = True) -> int
         if continue_outer_loop:
             continue
         else:
-            # Check if strict near-equality is requested
-            if strict_near_equality and not altered_character_found:
-                continue
-            else:
-                # Almost-equal string has been found - return the solution
-                return i
+            return int(i)
     # If have exited the loop - that means no solution has been found
-    return None
+    return -1
 
 
-almost_equal("dabc", "abd")
+
